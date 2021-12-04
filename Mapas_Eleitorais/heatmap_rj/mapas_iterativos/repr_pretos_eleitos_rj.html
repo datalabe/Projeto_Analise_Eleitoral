@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_73f2538248ea4cdea1fdb2ad6933571d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="https://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js"></script>
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_73f2538248ea4cdea1fdb2ad6933571d" ></div>
+        
+</body>
+<script>    
+    
+            var map_73f2538248ea4cdea1fdb2ad6933571d = L.map(
+                "map_73f2538248ea4cdea1fdb2ad6933571d",
+                {
+                    center: [-22.0622469, -44.04462],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 8,
+                    zoomControl: true,
+                    preferCanvas: false,
+                    heigth: "100%",
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d5e65fff25f7465eb33bcb91729ff407 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+    var color_map_5ae3859ccb714c649ca091b053fc90fa = {};
+
+    
+    color_map_5ae3859ccb714c649ca091b053fc90fa.color = d3.scale.threshold()
+              .domain([0.0, 0.002004008016032064, 0.004008016032064128, 0.006012024048096192, 0.008016032064128256, 0.01002004008016032, 0.012024048096192385, 0.014028056112224449, 0.01603206412825651, 0.018036072144288578, 0.02004008016032064, 0.022044088176352707, 0.02404809619238477, 0.026052104208416832, 0.028056112224448898, 0.03006012024048096, 0.03206412825651302, 0.03406813627254509, 0.036072144288577156, 0.03807615230460922, 0.04008016032064128, 0.04208416833667335, 0.04408817635270541, 0.04609218436873747, 0.04809619238476954, 0.050100200400801605, 0.052104208416833664, 0.05410821643286573, 0.056112224448897796, 0.05811623246492986, 0.06012024048096192, 0.06212424849699399, 0.06412825651302605, 0.06613226452905811, 0.06813627254509018, 0.07014028056112225, 0.07214428857715431, 0.07414829659318638, 0.07615230460921844, 0.0781563126252505, 0.08016032064128256, 0.08216432865731463, 0.0841683366733467, 0.08617234468937876, 0.08817635270541083, 0.09018036072144289, 0.09218436873747494, 0.09418837675350701, 0.09619238476953908, 0.09819639278557114, 0.10020040080160321, 0.10220440881763528, 0.10420841683366733, 0.1062124248496994, 0.10821643286573146, 0.11022044088176353, 0.11222444889779559, 0.11422845691382766, 0.11623246492985972, 0.11823647294589178, 0.12024048096192384, 0.12224448897795591, 0.12424849699398798, 0.12625250501002003, 0.1282565130260521, 0.13026052104208416, 0.13226452905811623, 0.1342685370741483, 0.13627254509018036, 0.13827655310621242, 0.1402805611222445, 0.14228456913827656, 0.14428857715430862, 0.1462925851703407, 0.14829659318637275, 0.15030060120240482, 0.1523046092184369, 0.15430861723446893, 0.156312625250501, 0.15831663326653306, 0.16032064128256512, 0.1623246492985972, 0.16432865731462926, 0.16633266533066132, 0.1683366733466934, 0.17034068136272545, 0.17234468937875752, 0.1743486973947896, 0.17635270541082165, 0.17835671342685372, 0.18036072144288579, 0.18236472945891782, 0.1843687374749499, 0.18637274549098196, 0.18837675350701402, 0.1903807615230461, 0.19238476953907815, 0.19438877755511022, 0.1963927855711423, 0.19839679358717435, 0.20040080160320642, 0.20240480961923848, 0.20440881763527055, 0.20641282565130262, 0.20841683366733466, 0.21042084168336672, 0.2124248496993988, 0.21442885771543085, 0.21643286573146292, 0.218436873747495, 0.22044088176352705, 0.22244488977955912, 0.22444889779559118, 0.22645290581162325, 0.22845691382765532, 0.23046092184368738, 0.23246492985971945, 0.23446893787575152, 0.23647294589178355, 0.23847695390781562, 0.24048096192384769, 0.24248496993987975, 0.24448897795591182, 0.24649298597194388, 0.24849699398797595, 0.250501002004008, 0.25250501002004005, 0.2545090180360721, 0.2565130260521042, 0.25851703406813625, 0.2605210420841683, 0.2625250501002004, 0.26452905811623245, 0.2665330661322645, 0.2685370741482966, 0.27054108216432865, 0.2725450901803607, 0.2745490981963928, 0.27655310621242485, 0.2785571142284569, 0.280561122244489, 0.28256513026052105, 0.2845691382765531, 0.2865731462925852, 0.28857715430861725, 0.2905811623246493, 0.2925851703406814, 0.29458917835671344, 0.2965931863727455, 0.2985971943887776, 0.30060120240480964, 0.3026052104208417, 0.3046092184368738, 0.3066132264529058, 0.30861723446893785, 0.3106212424849699, 0.312625250501002, 0.31462925851703405, 0.3166332665330661, 0.3186372745490982, 0.32064128256513025, 0.3226452905811623, 0.3246492985971944, 0.32665330661322645, 0.3286573146292585, 0.3306613226452906, 0.33266533066132264, 0.3346693386773547, 0.3366733466933868, 0.33867735470941884, 0.3406813627254509, 0.342685370741483, 0.34468937875751504, 0.3466933867735471, 0.3486973947895792, 0.35070140280561124, 0.3527054108216433, 0.35470941883767537, 0.35671342685370744, 0.3587174348697395, 0.36072144288577157, 0.3627254509018036, 0.36472945891783565, 0.3667334669338677, 0.3687374749498998, 0.37074148296593185, 0.3727454909819639, 0.374749498997996, 0.37675350701402804, 0.3787575150300601, 0.3807615230460922, 0.38276553106212424, 0.3847695390781563, 0.3867735470941884, 0.38877755511022044, 0.3907815631262525, 0.3927855711422846, 0.39478957915831664, 0.3967935871743487, 0.39879759519038077, 0.40080160320641284, 0.4028056112224449, 0.40480961923847697, 0.40681362725450904, 0.4088176352705411, 0.41082164328657317, 0.41282565130260523, 0.4148296593186373, 0.4168336673346693, 0.4188376753507014, 0.42084168336673344, 0.4228456913827655, 0.4248496993987976, 0.42685370741482964, 0.4288577154308617, 0.4308617234468938, 0.43286573146292584, 0.4348697394789579, 0.43687374749499, 0.43887775551102204, 0.4408817635270541, 0.44288577154308617, 0.44488977955911824, 0.4468937875751503, 0.44889779559118237, 0.45090180360721444, 0.4529058116232465, 0.45490981963927857, 0.45691382765531063, 0.4589178356713427, 0.46092184368737477, 0.46292585170340683, 0.4649298597194389, 0.46693386773547096, 0.46893787575150303, 0.4709418837675351, 0.4729458917835671, 0.4749498997995992, 0.47695390781563124, 0.4789579158316633, 0.48096192384769537, 0.48296593186372744, 0.4849699398797595, 0.48697394789579157, 0.48897795591182364, 0.4909819639278557, 0.49298597194388777, 0.49498997995991983, 0.4969939879759519, 0.49899799599198397, 0.501002004008016, 0.503006012024048, 0.5050100200400801, 0.5070140280561122, 0.5090180360721442, 0.5110220440881763, 0.5130260521042084, 0.5150300601202404, 0.5170340681362725, 0.5190380761523046, 0.5210420841683366, 0.5230460921843687, 0.5250501002004008, 0.5270541082164328, 0.5290581162324649, 0.531062124248497, 0.533066132264529, 0.5350701402805611, 0.5370741482965932, 0.5390781563126252, 0.5410821643286573, 0.5430861723446894, 0.5450901803607214, 0.5470941883767535, 0.5490981963927856, 0.5511022044088176, 0.5531062124248497, 0.5551102204408818, 0.5571142284569138, 0.5591182364729459, 0.561122244488978, 0.56312625250501, 0.5651302605210421, 0.5671342685370742, 0.5691382765531062, 0.5711422845691383, 0.5731462925851704, 0.5751503006012024, 0.5771543086172345, 0.5791583166332666, 0.5811623246492986, 0.5831663326653307, 0.5851703406813628, 0.5871743486973948, 0.5891783567134269, 0.591182364729459, 0.593186372745491, 0.5951903807615231, 0.5971943887775552, 0.5991983967935872, 0.6012024048096193, 0.6032064128256514, 0.6052104208416834, 0.6072144288577155, 0.6092184368737475, 0.6112224448897795, 0.6132264529058116, 0.6152304609218436, 0.6172344689378757, 0.6192384769539078, 0.6212424849699398, 0.6232464929859719, 0.625250501002004, 0.627254509018036, 0.6292585170340681, 0.6312625250501002, 0.6332665330661322, 0.6352705410821643, 0.6372745490981964, 0.6392785571142284, 0.6412825651302605, 0.6432865731462926, 0.6452905811623246, 0.6472945891783567, 0.6492985971943888, 0.6513026052104208, 0.6533066132264529, 0.655310621242485, 0.657314629258517, 0.6593186372745491, 0.6613226452905812, 0.6633266533066132, 0.6653306613226453, 0.6673346693386774, 0.6693386773547094, 0.6713426853707415, 0.6733466933867736, 0.6753507014028056, 0.6773547094188377, 0.6793587174348698, 0.6813627254509018, 0.6833667334669339, 0.685370741482966, 0.687374749498998, 0.6893787575150301, 0.6913827655310621, 0.6933867735470942, 0.6953907815631263, 0.6973947895791583, 0.6993987975951904, 0.7014028056112225, 0.7034068136272545, 0.7054108216432866, 0.7074148296593187, 0.7094188376753507, 0.7114228456913828, 0.7134268537074149, 0.7154308617234469, 0.717434869739479, 0.7194388777555111, 0.7214428857715431, 0.7234468937875751, 0.7254509018036072, 0.7274549098196392, 0.7294589178356713, 0.7314629258517034, 0.7334669338677354, 0.7354709418837675, 0.7374749498997996, 0.7394789579158316, 0.7414829659318637, 0.7434869739478958, 0.7454909819639278, 0.7474949899799599, 0.749498997995992, 0.751503006012024, 0.7535070140280561, 0.7555110220440882, 0.7575150300601202, 0.7595190380761523, 0.7615230460921844, 0.7635270541082164, 0.7655310621242485, 0.7675350701402806, 0.7695390781563126, 0.7715430861723447, 0.7735470941883767, 0.7755511022044088, 0.7775551102204409, 0.779559118236473, 0.781563126252505, 0.7835671342685371, 0.7855711422845691, 0.7875751503006012, 0.7895791583166333, 0.7915831663326653, 0.7935871743486974, 0.7955911823647295, 0.7975951903807615, 0.7995991983967936, 0.8016032064128257, 0.8036072144288577, 0.8056112224448898, 0.8076152304609219, 0.8096192384769539, 0.811623246492986, 0.8136272545090181, 0.8156312625250501, 0.8176352705410822, 0.8196392785571143, 0.8216432865731463, 0.8236472945891784, 0.8256513026052105, 0.8276553106212425, 0.8296593186372746, 0.8316633266533067, 0.8336673346693386, 0.8356713426853707, 0.8376753507014028, 0.8396793587174348, 0.8416833667334669, 0.843687374749499, 0.845691382765531, 0.8476953907815631, 0.8496993987975952, 0.8517034068136272, 0.8537074148296593, 0.8557114228456913, 0.8577154308617234, 0.8597194388777555, 0.8617234468937875, 0.8637274549098196, 0.8657314629258517, 0.8677354709418837, 0.8697394789579158, 0.8717434869739479, 0.87374749498998, 0.875751503006012, 0.8777555110220441, 0.8797595190380761, 0.8817635270541082, 0.8837675350701403, 0.8857715430861723, 0.8877755511022044, 0.8897795591182365, 0.8917835671342685, 0.8937875751503006, 0.8957915831663327, 0.8977955911823647, 0.8997995991983968, 0.9018036072144289, 0.9038076152304609, 0.905811623246493, 0.9078156312625251, 0.9098196392785571, 0.9118236472945892, 0.9138276553106213, 0.9158316633266533, 0.9178356713426854, 0.9198396793587175, 0.9218436873747495, 0.9238476953907816, 0.9258517034068137, 0.9278557114228457, 0.9298597194388778, 0.9318637274549099, 0.9338677354709419, 0.935871743486974, 0.9378757515030061, 0.9398797595190381, 0.9418837675350702, 0.9438877755511023, 0.9458917835671342, 0.9478957915831663, 0.9498997995991983, 0.9519038076152304, 0.9539078156312625, 0.9559118236472945, 0.9579158316633266, 0.9599198396793587, 0.9619238476953907, 0.9639278557114228, 0.9659318637274549, 0.9679358717434869, 0.969939879759519, 0.9719438877755511, 0.9739478957915831, 0.9759519038076152, 0.9779559118236473, 0.9799599198396793, 0.9819639278557114, 0.9839679358717435, 0.9859719438877755, 0.9879759519038076, 0.9899799599198397, 0.9919839679358717, 0.9939879759519038, 0.9959919839679359, 0.9979959919839679, 1.0])
+              .range(['#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#ffffccff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff8baff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#fff0a7ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe895ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#ffe083ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fed572ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#fec560ff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#feb44eff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fea546ff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fe953fff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd8038ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fd6530ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#fb4b29ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#f13523ff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#e61f1dff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#d7111fff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#c70623ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#b40026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#9a0026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff', '#800026ff']);
+    
+
+    color_map_5ae3859ccb714c649ca091b053fc90fa.x = d3.scale.linear()
+              .domain([0.0, 1.0])
+              .range([0, 400]);
+
+    color_map_5ae3859ccb714c649ca091b053fc90fa.legend = L.control({position: 'topright'});
+    color_map_5ae3859ccb714c649ca091b053fc90fa.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_5ae3859ccb714c649ca091b053fc90fa.legend.addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+
+    color_map_5ae3859ccb714c649ca091b053fc90fa.xAxis = d3.svg.axis()
+        .scale(color_map_5ae3859ccb714c649ca091b053fc90fa.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([0.0, '', '', 0.15, '', '', 0.3, '', '', 0.45, '', '', 0.6, '', '', 0.75, '', '', 0.9, '', '']);
+
+    color_map_5ae3859ccb714c649ca091b053fc90fa.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_5ae3859ccb714c649ca091b053fc90fa.g = color_map_5ae3859ccb714c649ca091b053fc90fa.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_5ae3859ccb714c649ca091b053fc90fa.g.selectAll("rect")
+        .data(color_map_5ae3859ccb714c649ca091b053fc90fa.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_5ae3859ccb714c649ca091b053fc90fa.x(color_map_5ae3859ccb714c649ca091b053fc90fa.color.domain()[i - 1]) : color_map_5ae3859ccb714c649ca091b053fc90fa.x.range()[0],
+            x1: i < color_map_5ae3859ccb714c649ca091b053fc90fa.color.domain().length ? color_map_5ae3859ccb714c649ca091b053fc90fa.x(color_map_5ae3859ccb714c649ca091b053fc90fa.color.domain()[i]) : color_map_5ae3859ccb714c649ca091b053fc90fa.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 10)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_5ae3859ccb714c649ca091b053fc90fa.g.call(color_map_5ae3859ccb714c649ca091b053fc90fa.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text('Representatividade Pretos Eleitos');
+    
+            var heat_map_93361a3dcaa04f17bfb0e0973a1969b1 = L.heatLayer(
+                [[-23.0011, -44.3196, 72.0], [-21.6252, -42.1017, 47.7], [-22.8697, -42.3326, 30.7], [-22.2283, -43.1118, 125.9], [-22.7528, -41.8846, 96.0], [-22.9774, -42.0267, 34.4], [-22.4715, -43.8269, 110.0], [-22.5481, -44.1752, 147.9], [-22.764, -43.3992, 15.1], [-22.1545, -42.4251, 112.5], [-21.1449, -41.6822, 45.6], [-22.8894, -42.0286, 100.0], [-22.4658, -42.6523, 58.7], [-21.5691, -41.9187, 50.5], [-21.7622, -41.3181, 151.7], [-21.9797, -42.3664, 72.7], [-22.1821, -41.663, 26.4], [-21.4846, -41.6165, 149.1], [-21.931, -42.6046, 35.9], [-22.4812, -42.2066, 20.7], [-22.0404, -43.214, 28.7], [-22.0834, -41.8719, 15.8], [-22.0267, -42.3648, 23.0], [-22.0536, -42.5232, 103.3], [-22.7858, -43.3049, 94.7], [-22.5498, -43.6827, 167.9], [-22.5347, -42.9895, 148.2], [-22.8495, -42.2299, 47.1], [-22.7565, -42.8639, 43.4], [-22.8636, -43.7798, 43.0], [-21.4296, -41.7014, 76.4], [-21.6748, -42.0758, 114.3], [-21.1997, -41.8799, 49.0], [-22.4897, -44.5675, 44.5], [-22.6435, -43.6602, 57.7], [-21.2091, -42.1271, 11.9], [-22.3768, -41.7848, 84.5], [-21.9813, -42.2533, 8.7], [-22.6632, -43.0315, 154.2], [-22.9594, -44.0409, 25.0], [-22.9354, -42.8246, 120.8], [-22.5245, -43.7312, 81.9], [-22.8028, -43.4601, 164.7], [-22.4572, -43.4803, 114.6], [-21.4148, -42.1938, 87.6], [-21.039, -41.9697, 55.1], [-22.8057, -43.4233, 24.6], [-22.8832, -43.1034, 170.8], [-22.2932, -42.5377, 25.6], [-22.7556, -43.4603, 265.0], [-22.6078, -43.7108, 79.5], [-22.1585, -43.304, 14.9], [-23.2221, -44.7175, 37.7], [-22.4309, -43.4285, 18.7], [-22.52, -43.1926, 18.9], [-22.5172, -44.0022, 33.1], [-22.6215, -43.9081, 159.1], [-20.9632, -42.0465, 37.5], [-22.4175, -44.2952, 43.6], [-22.4045, -44.2597, 173.3], [-22.7102, -43.5518, 81.9], [-22.1031, -41.4693, 293.0], [-22.4705, -44.4509, 86.8], [-22.7181, -42.6276, 19.9], [-22.72, -44.1419, 255.6], [-22.1692, -43.5856, 10.9], [-22.5174, -41.9475, 45.6], [-22.9129, -43.2003, 185.1], [-21.9547, -42.0098, 14.7], [-21.541, -42.1832, 123.9], [-21.6551, -41.756, 160.4], [-21.4702, -41.1091, 145.2], [-22.8268, -43.0634, 38.7], [-21.638, -41.0446, 50.2], [-22.8058, -43.3729, 117.5], [-21.3661, -41.9511, 27.1], [-22.1525, -42.9327, 201.2], [-22.8429, -42.1026, 83.8], [-21.9578, -42.1328, 15.4], [-21.9949, -42.9142, 43.1], [-22.9292, -42.5099, 35.8], [-22.7526, -43.7155, 21.1], [-22.6574, -42.3961, 18.6], [-22.0485, -42.6761, 26.9], [-22.7423, -42.7202, 66.6], [-22.4165, -42.9752, 42.3], [-22.0638, -42.0643, 20.4], [-22.1165, -43.2185, 53.8], [-22.2445, -43.7129, 64.1], [-20.9276, -41.8701, 23.2], [-22.4059, -43.6686, 34.7], [-22.5202, -44.0996, 182.5]],
+                {"blur": 15, "fillOpacity": 0.5, "gradient": {"0.0": "#ffffcc", "0.05": "#ffffcc", "0.1": "#fff8ba", "0.15000000000000002": "#ffe895", "0.2": "#ffe895", "0.25": "#ffe083", "0.30000000000000004": "#fec560", "0.35000000000000003": "#feb44e", "0.4": "#feb44e", "0.45": "#fea546", "0.5": "#fe953f", "0.55": "#fd8038", "0.6000000000000001": "#fb4b29", "0.65": "#fb4b29", "0.7000000000000001": "#e61f1d", "0.75": "#e61f1d", "0.8": "#d7111f", "0.8500000000000001": "#b40026", "0.9": "#b40026", "0.9500000000000001": "#800026"}, "max": 1.0, "maxZoom": 18, "minOpacity": 0.5, "radius": 25}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            var circle_007ccd59f9e240188e0cb95da70ffb17 = L.circle(
+                [-23.0011, -44.3196],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 110.42457745237617, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_007ccd59f9e240188e0cb95da70ffb17.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:ANGRA DOS REIS</bold><li><li><bold> Representatividade:72.0</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_d0b67c74694b41ccbe59071a367201dd = L.circle(
+                [-21.6252, -42.1017],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 70.20535131492142, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_d0b67c74694b41ccbe59071a367201dd.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:APERIBÉ</bold><li><li><bold> Representatividade:47.7</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_b3bae987785b4b6582dbaac4a4435c70 = L.circle(
+                [-22.8697, -42.3326],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 43.23666750407421, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_b3bae987785b4b6582dbaac4a4435c70.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:ARARUAMA</bold><li><li><bold> Representatividade:30.7</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_26226c8f29d64ff1ae4715336e3bbfbf = L.circle(
+                [-22.2283, -43.1118],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 204.18710097596107, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_26226c8f29d64ff1ae4715336e3bbfbf.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:AREAL</bold><li><li><bold> Representatividade:125.9</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_b472f6c51423493a96fe15f0d47d42a7 = L.circle(
+                [-22.7528, -41.8846],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 151.52990687977484, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_b472f6c51423493a96fe15f0d47d42a7.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:ARMAÇÃO DOS BÚZIOS</bold><li><li><bold> Representatividade:96.0</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_4ef0569f89b745e1805f84a74023ca28 = L.circle(
+                [-22.9774, -42.0267],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 49.0020542556861, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_4ef0569f89b745e1805f84a74023ca28.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:ARRAIAL DO CABO</bold><li><li><bold> Representatividade:34.4</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_f8c0e8d522454bb581919379971b96f8 = L.circle(
+                [-22.4715, -43.8269],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 176.0078158642367, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_f8c0e8d522454bb581919379971b96f8.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:BARRA DO PIRAÍ</bold><li><li><bold> Representatividade:110.0</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_152e9c6b0ea94f5c8f99eaf113f2aac9 = L.circle(
+                [-22.5481, -44.1752],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 243.7614313655981, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_152e9c6b0ea94f5c8f99eaf113f2aac9.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:BARRA MANSA</bold><li><li><bold> Representatividade:147.9</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_584c5209eb06447baf8014dd39dc152b = L.circle(
+                [-22.764, -43.3992],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.809551457004655, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_584c5209eb06447baf8014dd39dc152b.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:BELFORD ROXO</bold><li><li><bold> Representatividade:15.1</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_335b46240d384a0e96cef63a1186e311 = L.circle(
+                [-22.1545, -42.4251],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 180.41297775372348, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_335b46240d384a0e96cef63a1186e311.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:BOM JARDIM</bold><li><li><bold> Representatividade:112.5</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_9e5c2ada3b164e5783db520deaf9453f = L.circle(
+                [-21.1449, -41.6822],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 66.81305450510237, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_9e5c2ada3b164e5783db520deaf9453f.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:BOM JESUS DO ITABAPOANA</bold><li><li><bold> Representatividade:45.6</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_cd5ff84bba534705a02ac29009906bee = L.circle(
+                [-22.8894, -42.0286],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 158.48931924611142, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_cd5ff84bba534705a02ac29009906bee.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:CABO FRIO</bold><li><li><bold> Representatividade:100.0</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_a6837a4a8c4d483a82adb5245c1c91b9 = L.circle(
+                [-22.4658, -42.6523],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 88.20676841940458, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_a6837a4a8c4d483a82adb5245c1c91b9.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:CACHOEIRAS DE MACACU</bold><li><li><bold> Representatividade:58.7</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_44565d3cd40c41d2926cb6c4f2beec07 = L.circle(
+                [-21.5691, -41.9187],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 74.7516039756978, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_44565d3cd40c41d2926cb6c4f2beec07.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:CAMBUCI</bold><li><li><bold> Representatividade:50.5</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_3142e02c79b340cd885c3ab8e60d902f = L.circle(
+                [-21.7622, -41.3181],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 250.6594825898062, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_3142e02c79b340cd885c3ab8e60d902f.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:CAMPOS DOS GOYTACAZES</bold><li><li><bold> Representatividade:151.7</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_3c58af1a878e44d5aadfc7a8e95e212d = L.circle(
+                [-21.9797, -42.3664],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 111.6060793575362, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_3c58af1a878e44d5aadfc7a8e95e212d.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:CANTAGALO</bold><li><li><bold> Representatividade:72.7</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_63cfbc5790014269974b6d500e7f95c2 = L.circle(
+                [-22.1821, -41.663],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 36.62387723499343, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_63cfbc5790014269974b6d500e7f95c2.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:CARAPEBUS</bold><li><li><bold> Representatividade:26.4</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_c8e4e69afaa841d1b7f6ac3261293519 = L.circle(
+                [-21.4846, -41.6165],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 245.937870218861, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_c8e4e69afaa841d1b7f6ac3261293519.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:CARDOSO MOREIRA</bold><li><li><bold> Representatividade:149.1</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_5db019be02684689b03a760b67ad676c = L.circle(
+                [-21.931, -42.6046],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 51.3575022011377, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_5db019be02684689b03a760b67ad676c.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:CARMO</bold><li><li><bold> Representatividade:35.9</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_810bcea0d5954d2a8334de19ac840317 = L.circle(
+                [-22.4812, -42.2066],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 28.026404125233995, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_810bcea0d5954d2a8334de19ac840317.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:CASIMIRO DE ABREU</bold><li><li><bold> Representatividade:20.7</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_de187d45802a4921842ea10ef1d258d0 = L.circle(
+                [-22.0404, -43.214],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 40.14857047062151, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_de187d45802a4921842ea10ef1d258d0.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:COMENDADOR LEVY GASPARIAN</bold><li><li><bold> Representatividade:28.7</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_7747f8cb65004246a6564ba50048f655 = L.circle(
+                [-22.0834, -41.8719],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.822016948774507, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_7747f8cb65004246a6564ba50048f655.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:CONCEIÇÃO DE MACABU</bold><li><li><bold> Representatividade:15.8</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_d2cd8a978d6d4713b53b442224e7c8d7 = L.circle(
+                [-22.0267, -42.3648],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 31.470280916501526, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_d2cd8a978d6d4713b53b442224e7c8d7.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:CORDEIRO</bold><li><li><bold> Representatividade:23.0</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_bc12962958d44d76b7c9346dcd75c3b8 = L.circle(
+                [-22.0536, -42.5232],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 164.25188172011514, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_bc12962958d44d76b7c9346dcd75c3b8.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:DUAS BARRAS</bold><li><li><bold> Representatividade:103.3</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_1644d7da8e7b4661947c68cca5e162dc = L.circle(
+                [-22.7858, -43.3049],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 149.27427717908787, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_1644d7da8e7b4661947c68cca5e162dc.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:DUQUE DE CAXIAS</bold><li><li><bold> Representatividade:94.7</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_de309d4c432443a0b243bed50720d84d = L.circle(
+                [-22.5498, -43.6827],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 280.2565463071719, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_de309d4c432443a0b243bed50720d84d.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:ENGENHEIRO PAULO DE FRONTIN</bold><li><li><bold> Representatividade:167.9</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_37f69084deed4b53a2da54d73a635609 = L.circle(
+                [-22.5347, -42.9895],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 244.30537609673377, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_37f69084deed4b53a2da54d73a635609.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:GUAPIMIRIM</bold><li><li><bold> Representatividade:148.2</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_12297dcda7544c8b8e66bf42e6dd281a = L.circle(
+                [-22.8495, -42.2299],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 69.23456977628825, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_12297dcda7544c8b8e66bf42e6dd281a.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:IGUABA GRANDE</bold><li><li><bold> Representatividade:47.1</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_5e0442724f2e44849ba364501acd580d = L.circle(
+                [-22.7565, -42.8639],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 63.27595411736542, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_5e0442724f2e44849ba364501acd580d.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:ITABORAÍ</bold><li><li><bold> Representatividade:43.4</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_4ace608e939f4657a54cd17bf208cdf1 = L.circle(
+                [-22.8636, -43.7798],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 62.634743194944704, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_4ace608e939f4657a54cd17bf208cdf1.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:ITAGUAÍ</bold><li><li><bold> Representatividade:43.0</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_a3b2bfae913c4a2a8d3241eab9baa5df = L.circle(
+                [-21.4296, -41.7014],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 117.86984011549364, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_a3b2bfae913c4a2a8d3241eab9baa5df.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:ITALVA</bold><li><li><bold> Representatividade:76.4</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_47f359b0481d4cf59c9d61e17b95322f = L.circle(
+                [-21.6748, -42.0758],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 183.59077427570102, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_47f359b0481d4cf59c9d61e17b95322f.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:ITAOCARA</bold><li><li><bold> Representatividade:114.3</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_b0dbd20cdf4840bcb2c91cf62f61dcad = L.circle(
+                [-21.1997, -41.8799],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 72.31288491813308, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_b0dbd20cdf4840bcb2c91cf62f61dcad.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:ITAPERUNA</bold><li><li><bold> Representatividade:49.0</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_644ad30e49c3457096ba008ab00d5007 = L.circle(
+                [-22.4897, -44.5675],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 65.04231825226915, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_644ad30e49c3457096ba008ab00d5007.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:ITATIAIA</bold><li><li><bold> Representatividade:44.5</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_2dd156e48d6447c48b1f7b5d555cb0bc = L.circle(
+                [-22.6435, -43.6602],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 86.55524588897562, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_2dd156e48d6447c48b1f7b5d555cb0bc.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:JAPERI</bold><li><li><bold> Representatividade:57.7</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_fcd143e9a99540ccb0c2b0dfc0fe592e = L.circle(
+                [-21.2091, -42.1271],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.24409538379939, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_fcd143e9a99540ccb0c2b0dfc0fe592e.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:LAJE DO MURIAÉ</bold><li><li><bold> Representatividade:11.9</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_0bcb3302b92146f0882120df8e99a90c = L.circle(
+                [-22.3768, -41.7848],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 131.68684106834957, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_0bcb3302b92146f0882120df8e99a90c.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:MACAÉ</bold><li><li><bold> Representatividade:84.5</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_c3596da5303b446b84ff5d128a4ff219 = L.circle(
+                [-21.9813, -42.2533],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.801179360629751, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_c3596da5303b446b84ff5d128a4ff219.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:MACUCO</bold><li><li><bold> Representatividade:8.7</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_8ed847da92054f20bbbdec138be9326f = L.circle(
+                [-22.6632, -43.0315],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 255.20713441261483, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_8ed847da92054f20bbbdec138be9326f.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:MAGÉ</bold><li><li><bold> Representatividade:154.2</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_c1da0526c6c34dd593e38edb56b35108 = L.circle(
+                [-22.9594, -44.0409],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 34.493241536530384, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_c1da0526c6c34dd593e38edb56b35108.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:MANGARATIBA</bold><li><li><bold> Representatividade:25.0</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_37fbfe4a7609497fb1ebda758036c047 = L.circle(
+                [-22.9354, -42.8246],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 195.10734885727945, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_37fbfe4a7609497fb1ebda758036c047.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:MARICÁ</bold><li><li><bold> Representatividade:120.8</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_445eb28fc08d4c17939ac011797617a5 = L.circle(
+                [-22.5245, -43.7312],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 127.2366692902553, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_445eb28fc08d4c17939ac011797617a5.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:MENDES</bold><li><li><bold> Representatividade:81.9</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_ad1e61219cae474dbdfc1b6498a4bd5e = L.circle(
+                [-22.8028, -43.4601],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 274.38663843110464, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_ad1e61219cae474dbdfc1b6498a4bd5e.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:MESQUITA</bold><li><li><bold> Representatividade:164.7</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_055c3e9cca184dfd8e50a42fb37bf9c8 = L.circle(
+                [-22.4572, -43.4803],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 184.12089588584868, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_055c3e9cca184dfd8e50a42fb37bf9c8.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:MIGUEL PEREIRA</bold><li><li><bold> Representatividade:114.6</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_1993a53951f743fd95fec67117bd609c = L.circle(
+                [-21.4148, -42.1938],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 137.01070997006238, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_1993a53951f743fd95fec67117bd609c.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:MIRACEMA</bold><li><li><bold> Representatividade:87.6</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_6a62e1ea9e384369811238e5b75c459a = L.circle(
+                [-21.039, -41.9697],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 82.27478550485847, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_6a62e1ea9e384369811238e5b75c459a.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:NATIVIDADE</bold><li><li><bold> Representatividade:55.1</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_010a8d8969e943f382ce14f1c18f0cf8 = L.circle(
+                [-22.8057, -43.4233],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 33.88664849940272, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_010a8d8969e943f382ce14f1c18f0cf8.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:NILÓPOLIS</bold><li><li><bold> Representatividade:24.6</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_e87e5b69b119405ca2c6ea37e137ef96 = L.circle(
+                [-22.8832, -43.1034],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 285.5858286009959, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_e87e5b69b119405ca2c6ea37e137ef96.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:NITERÓI</bold><li><li><bold> Representatividade:170.8</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_ca81cea326fc48eca871d67f802f3120 = L.circle(
+                [-22.2932, -42.5377],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 35.40494807967946, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_ca81cea326fc48eca871d67f802f3120.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:NOVA FRIBURGO</bold><li><li><bold> Representatividade:25.6</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_e6f9974f55574665aec2025bba2c553a = L.circle(
+                [-22.7556, -43.4603],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 462.9887744689417, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_e6f9974f55574665aec2025bba2c553a.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:NOVA IGUAÇU</bold><li><li><bold> Representatividade:265.0</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_cd79b40455624805b165597d9847059a = L.circle(
+                [-22.6078, -43.7108],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 123.14133045401528, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_cd79b40455624805b165597d9847059a.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:PARACAMBI</bold><li><li><bold> Representatividade:79.5</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_35dd44924c2d476f903a58227b9d6745 = L.circle(
+                [-22.1585, -43.304],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.521127376221113, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_35dd44924c2d476f903a58227b9d6745.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:PARAÍBA DO SUL</bold><li><li><bold> Representatividade:14.9</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_a806cf7d5d7548ba955443afe0b1d906 = L.circle(
+                [-23.2221, -44.7175],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 54.19702967498827, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_a806cf7d5d7548ba955443afe0b1d906.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:PARATY</bold><li><li><bold> Representatividade:37.7</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_330c1df286194fab93c9779b24e3fc2e = L.circle(
+                [-22.4309, -43.4285],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25.06257947781994, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_330c1df286194fab93c9779b24e3fc2e.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:PATY DO ALFERES</bold><li><li><bold> Representatividade:18.7</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_9774f8cb67bd4d6592be92c8667f3548 = L.circle(
+                [-22.52, -43.1926],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25.357590526541642, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_9774f8cb67bd4d6592be92c8667f3548.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:PETRÓPOLIS</bold><li><li><bold> Representatividade:18.9</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_cad27addb0334695a3c931b4129c716d = L.circle(
+                [-22.5172, -44.0022],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 46.96894368393407, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_cad27addb0334695a3c931b4129c716d.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:PINHEIRAL</bold><li><li><bold> Representatividade:33.1</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_6c4271b54acb49bd8932e43af740aaa5 = L.circle(
+                [-22.6215, -43.9081],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 264.1418392825492, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_6c4271b54acb49bd8932e43af740aaa5.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:PIRAÍ</bold><li><li><bold> Representatividade:159.1</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_348ac1eac30b4a6a842fa536bf0cf3af = L.circle(
+                [-20.9632, -42.0465],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 53.88084456117059, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_348ac1eac30b4a6a842fa536bf0cf3af.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:PORCIÚNCULA</bold><li><li><bold> Representatividade:37.5</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_2991cacf9fc14fa487d42c56dda3128e = L.circle(
+                [-22.4175, -44.2952],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 63.59678160625859, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_2991cacf9fc14fa487d42c56dda3128e.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:PORTO REAL</bold><li><li><bold> Representatividade:43.6</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_fb068c4097f5471c978ae18500123e68 = L.circle(
+                [-22.4045, -44.2597],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 290.1873115562384, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_fb068c4097f5471c978ae18500123e68.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:QUATIS</bold><li><li><bold> Representatividade:173.3</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_1ad8ab262351479ba84958a8dd7d8a76 = L.circle(
+                [-22.7102, -43.5518],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 127.2366692902553, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_1ad8ab262351479ba84958a8dd7d8a76.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:QUEIMADOS</bold><li><li><bold> Representatividade:81.9</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_4c0e35e169d948eb9a80329c5d3d85a3 = L.circle(
+                [-22.1031, -41.4693],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 517.0760022129999, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_4c0e35e169d948eb9a80329c5d3d85a3.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:QUISSAMÃ</bold><li><li><bold> Representatividade:293.0</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_577721cff2ea48f989a43701a3bd2898 = L.circle(
+                [-22.4705, -44.4509],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 135.63497687931272, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_577721cff2ea48f989a43701a3bd2898.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:RESENDE</bold><li><li><bold> Representatividade:86.8</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_43d3000daec64c459a3819906a7df601 = L.circle(
+                [-22.7181, -42.6276],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 26.83727300129598, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_43d3000daec64c459a3819906a7df601.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:RIO BONITO</bold><li><li><bold> Representatividade:19.9</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_ed79c71ba8014458a17cd898f34d5d06 = L.circle(
+                [-22.72, -44.1419],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 444.9558637903421, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_ed79c71ba8014458a17cd898f34d5d06.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:RIO CLARO</bold><li><li><bold> Representatividade:255.6</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_95fc56f291d945a1b9afdfb680c7fee8 = L.circle(
+                [-22.1692, -43.5856],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.841053512787248, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_95fc56f291d945a1b9afdfb680c7fee8.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:RIO DAS FLORES</bold><li><li><bold> Representatividade:10.9</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_0420a01f5be741d792a0736999efb441 = L.circle(
+                [-22.5174, -41.9475],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 66.81305450510237, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_0420a01f5be741d792a0736999efb441.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:RIO DAS OSTRAS</bold><li><li><bold> Representatividade:45.6</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_bbfa589b173b4f9ab2f621a1e40dc84d = L.circle(
+                [-22.9129, -43.2003],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 311.9945880100486, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_bbfa589b173b4f9ab2f621a1e40dc84d.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:RIO DE JANEIRO</bold><li><li><bold> Representatividade:185.1</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_da5961def3c7486aab353843e39b0cd7 = L.circle(
+                [-21.9547, -42.0098],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 19.2330901931713, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_da5961def3c7486aab353843e39b0cd7.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:SANTA MARIA MADALENA</bold><li><li><bold> Representatividade:14.7</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_afaef59c3e344684a9803a02ac400bc6 = L.circle(
+                [-21.541, -42.1832],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 200.62194522963088, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_afaef59c3e344684a9803a02ac400bc6.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:SANTO ANTÔNIO DE PÁDUA</bold><li><li><bold> Representatividade:123.9</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_86e4047861264499bf4bf0c5f261b800 = L.circle(
+                [-21.6551, -41.756],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 266.51692898271057, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_86e4047861264499bf4bf0c5f261b800.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:SÃO FIDÉLIS</bold><li><li><bold> Representatividade:160.4</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_4fb97751d63847d98a9be45c005be0a9 = L.circle(
+                [-21.4702, -41.1091],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 238.87091767769425, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_4fb97751d63847d98a9be45c005be0a9.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:SÃO FRANCISCO DE ITABAPOANA</bold><li><li><bold> Representatividade:145.2</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_6fd595d7fcc245bb9c54b7e4f8e4b755 = L.circle(
+                [-22.8268, -43.0634],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 55.78045616177858, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_6fd595d7fcc245bb9c54b7e4f8e4b755.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:SÃO GONÇALO</bold><li><li><bold> Representatividade:38.7</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_f5a61a732f414c99ba7696936265aae9 = L.circle(
+                [-21.638, -41.0446],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 74.26327349887956, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_f5a61a732f414c99ba7696936265aae9.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:SÃO JOÃO DA BARRA</bold><li><li><bold> Representatividade:50.2</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_01ff0816bbe74d85b1f8c07c4b8d61a4 = L.circle(
+                [-22.8058, -43.3729],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 189.25251223947035, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_01ff0816bbe74d85b1f8c07c4b8d61a4.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:SÃO JOÃO DE MERITI</bold><li><li><bold> Representatividade:117.5</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_878aef98ec0b414d823f8901cdb58f0c = L.circle(
+                [-21.3661, -41.9511],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 37.6934786985922, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_878aef98ec0b414d823f8901cdb58f0c.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:SÃO JOSÉ DE UBÁ</bold><li><li><bold> Representatividade:27.1</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_2c5c38f5416c4b13b36b3d36b045a5b5 = L.circle(
+                [-22.1525, -42.9327],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 341.9721777168104, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_2c5c38f5416c4b13b36b3d36b045a5b5.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:SÃO JOSÉ DO VALE DO RIO PRETO</bold><li><li><bold> Representatividade:201.2</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_3dc5f2b3f3bc42ea9e4a86c2f596cdc8 = L.circle(
+                [-22.8429, -42.1026],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 130.48735274525572, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_3dc5f2b3f3bc42ea9e4a86c2f596cdc8.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:SÃO PEDRO DA ALDEIA</bold><li><li><bold> Representatividade:83.8</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_427f6d9f38e14d9084317ccf2c72d5e8 = L.circle(
+                [-21.9578, -42.1328],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.242902946831144, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_427f6d9f38e14d9084317ccf2c72d5e8.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:SÃO SEBASTIÃO DO ALTO</bold><li><li><bold> Representatividade:15.4</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_932a0b7f33af45a08356170d56162c36 = L.circle(
+                [-21.9949, -42.9142],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 62.7949902259956, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_932a0b7f33af45a08356170d56162c36.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:SAPUCAIA</bold><li><li><bold> Representatividade:43.1</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_d8a61ae5a7424f4da1c738c5c589c2f8 = L.circle(
+                [-22.9292, -42.5099],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 51.20016131618927, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_d8a61ae5a7424f4da1c738c5c589c2f8.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:SAQUAREMA</bold><li><li><bold> Representatividade:35.8</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_9d24f52e38f24bb88122d52663fc7e5c = L.circle(
+                [-22.7526, -43.7155],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 28.622706732889295, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_9d24f52e38f24bb88122d52663fc7e5c.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:SEROPÉDICA</bold><li><li><bold> Representatividade:21.1</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_67949ce98af34544a093ccddd32f2f5b = L.circle(
+                [-22.6574, -42.3961],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 24.915192022082646, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_67949ce98af34544a093ccddd32f2f5b.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:SILVA JARDIM</bold><li><li><bold> Representatividade:18.6</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_f3aca0b782b14ec99c557f62733ceee0 = L.circle(
+                [-22.0485, -42.6761],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 37.387593144062365, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_f3aca0b782b14ec99c557f62733ceee0.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:SUMIDOURO</bold><li><li><bold> Representatividade:26.9</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_b16d7e1a5c22461abed51a10e6f1e02c = L.circle(
+                [-22.7423, -42.7202],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 101.34950971072682, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_b16d7e1a5c22461abed51a10e6f1e02c.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:TANGUÁ</bold><li><li><bold> Representatividade:66.6</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_7bfacdac60ee4d829ad67ca82bfc44b8 = L.circle(
+                [-22.4165, -42.9752],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 61.51406172780026, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_7bfacdac60ee4d829ad67ca82bfc44b8.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:TERESÓPOLIS</bold><li><li><bold> Representatividade:42.3</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_c75bdf2aed6c4394b6e14a8103cedb7d = L.circle(
+                [-22.0638, -42.0643],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 27.5799315622464, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_c75bdf2aed6c4394b6e14a8103cedb7d.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:TRAJANO DE MORAES</bold><li><li><bold> Representatividade:20.4</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_e0e0c08e2d85456fa7c5aa5db0491eaa = L.circle(
+                [-22.1165, -43.2185],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 80.1420603198198, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_e0e0c08e2d85456fa7c5aa5db0491eaa.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:TRÊS RIOS</bold><li><li><bold> Representatividade:53.8</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_c03feac408c047c69543f69d2cd96c9f = L.circle(
+                [-22.2445, -43.7129],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 97.17260209856963, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_c03feac408c047c69543f69d2cd96c9f.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:VALENÇA</bold><li><li><bold> Representatividade:64.1</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_555b05269cf448c0861d1e7b57af4cc6 = L.circle(
+                [-20.9276, -41.8701],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 31.771431533109713, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_555b05269cf448c0861d1e7b57af4cc6.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:VARRE-SAI</bold><li><li><bold> Representatividade:23.2</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_a26445472108479a839eb61dbb1552cc = L.circle(
+                [-22.4059, -43.6686],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 49.47233654348493, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_a26445472108479a839eb61dbb1552cc.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:VASSOURAS</bold><li><li><bold> Representatividade:34.7</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_3418b65abb6142b59ae7eb80c896856a = L.circle(
+                [-22.5202, -44.0996],
+                {"bubblingMouseEvents": true, "color": "#00FF69", "dashArray": null, "dashOffset": null, "fill": "#00A1B3", "fillColor": "#00FF69", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 307.1773261133553, "stroke": true, "weight": 3}
+            ).addTo(map_73f2538248ea4cdea1fdb2ad6933571d);
+        
+    
+            circle_3418b65abb6142b59ae7eb80c896856a.bindTooltip(
+                `<div>
+                     <li><bold> MUNICIPIO:VOLTA REDONDA</bold><li><li><bold> Representatividade:182.5</bold><li>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
